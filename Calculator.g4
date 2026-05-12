@@ -1,29 +1,38 @@
 grammar Calculator;
 
-//Gramatica
-prog: stat+;
+// ====== REGLAS SINTÁCTICAS (parser) ======
 
-stat: expr NEWLINE?              #printExpr
-    | ID EQ expr NEWLINE?        #assign
-    | NEWLINE                   #blank
-    ;
+programa: instruccion+ EOF ;
 
-expr: expr op=(MUL|DIV) expr    #MulDiv
-    | expr op=(ADD|SUB) expr    #AddSub
-    | INT                       #int
-    | ID                        #id
-    | LPAREN expr RPAREN        #parens
-    ;
+instruccion: variar
+           | asignacion
+           | salida
+           ;
 
-//Lexemas
-MUL : '*';
-DIV : '/';
-ADD : '+';
-SUB : '-';
-EQ: '=';
-ID : [a-zA-Z]+;
-INT : [0-9];
-LPAREN : '(';
-RPAREN : ')';
-NEWLINE:'\r'? '\n';
-WS: [ \t]+ -> skip;
+variar: 'variar' variable 'desde' expresion 'hasta' expresion
+        ('con' 'paso' expresion)?
+        'hacer' bloque 'fin_variar' ;
+
+variable: ID ;
+
+expresion: termino (op=('+'|'-'|'*'|'/') termino)* ;
+
+termino: numero                  # terminoNum
+       | variable                # terminoVar
+       | '(' expresion ')'       # terminoParens
+       ;
+
+bloque: instruccion* ;
+
+asignacion: variable ASIGNAR expresion ;
+
+salida: 'escribir' expresion ;
+
+numero: INT ;
+
+// ====== TOKENS (lexer) ======
+
+ASIGNAR : '<-' ;
+ID      : [a-zA-Z] [a-zA-Z0-9_]* ;
+INT     : [0-9]+ ;
+WS      : [ \t\r\n]+ -> skip ;

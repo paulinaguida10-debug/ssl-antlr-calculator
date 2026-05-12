@@ -1,25 +1,82 @@
-// Generated from c://Users//Mariana//OneDrive - docentes.frm.utn.edu.ar//SSL//2025//ANTLR4//antlr-calculator-project//Calculator.g4 by ANTLR 4.13.2
+// Generated from Calculator.g4 by ANTLR 4.9.3
 // jshint ignore: start
-import antlr4 from 'antlr4';
+import antlr4, { PredictionContextCache } from 'antlr4';
 
 
-const serializedATN = [4,0,11,56,6,-1,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,
-4,7,4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,1,0,1,0,1,1,1,1,
-1,2,1,2,1,3,1,3,1,4,1,4,1,5,4,5,35,8,5,11,5,12,5,36,1,6,1,6,1,7,1,7,1,8,
-1,8,1,9,3,9,46,8,9,1,9,1,9,1,10,4,10,51,8,10,11,10,12,10,52,1,10,1,10,0,
-0,11,1,1,3,2,5,3,7,4,9,5,11,6,13,7,15,8,17,9,19,10,21,11,1,0,3,2,0,65,90,
-97,122,1,0,48,57,2,0,9,9,32,32,58,0,1,1,0,0,0,0,3,1,0,0,0,0,5,1,0,0,0,0,
-7,1,0,0,0,0,9,1,0,0,0,0,11,1,0,0,0,0,13,1,0,0,0,0,15,1,0,0,0,0,17,1,0,0,
-0,0,19,1,0,0,0,0,21,1,0,0,0,1,23,1,0,0,0,3,25,1,0,0,0,5,27,1,0,0,0,7,29,
-1,0,0,0,9,31,1,0,0,0,11,34,1,0,0,0,13,38,1,0,0,0,15,40,1,0,0,0,17,42,1,0,
-0,0,19,45,1,0,0,0,21,50,1,0,0,0,23,24,5,42,0,0,24,2,1,0,0,0,25,26,5,47,0,
-0,26,4,1,0,0,0,27,28,5,43,0,0,28,6,1,0,0,0,29,30,5,45,0,0,30,8,1,0,0,0,31,
-32,5,61,0,0,32,10,1,0,0,0,33,35,7,0,0,0,34,33,1,0,0,0,35,36,1,0,0,0,36,34,
-1,0,0,0,36,37,1,0,0,0,37,12,1,0,0,0,38,39,7,1,0,0,39,14,1,0,0,0,40,41,5,
-40,0,0,41,16,1,0,0,0,42,43,5,41,0,0,43,18,1,0,0,0,44,46,5,13,0,0,45,44,1,
-0,0,0,45,46,1,0,0,0,46,47,1,0,0,0,47,48,5,10,0,0,48,20,1,0,0,0,49,51,7,2,
-0,0,50,49,1,0,0,0,51,52,1,0,0,0,52,50,1,0,0,0,52,53,1,0,0,0,53,54,1,0,0,
-0,54,55,6,10,0,0,55,22,1,0,0,0,4,0,36,45,52,1,6,0,0];
+
+const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
+    "\u5964\u0002\u0014\u007f\b\u0001\u0004\u0002\t\u0002\u0004\u0003\t\u0003",
+    "\u0004\u0004\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007",
+    "\t\u0007\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004",
+    "\f\t\f\u0004\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010",
+    "\t\u0010\u0004\u0011\t\u0011\u0004\u0012\t\u0012\u0004\u0013\t\u0013",
+    "\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002\u0003\u0002",
+    "\u0003\u0002\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+    "\u0003\u0004\u0003\u0005\u0003\u0005\u0003\u0005\u0003\u0005\u0003\u0006",
+    "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0007\u0003\u0007",
+    "\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0003\b\u0003\b\u0003",
+    "\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003",
+    "\t\u0003\t\u0003\n\u0003\n\u0003\u000b\u0003\u000b\u0003\f\u0003\f\u0003",
+    "\r\u0003\r\u0003\u000e\u0003\u000e\u0003\u000f\u0003\u000f\u0003\u000f",
+    "\u0003\u000f\u0003\u000f\u0003\u000f\u0003\u000f\u0003\u000f\u0003\u000f",
+    "\u0003\u0010\u0003\u0010\u0003\u0010\u0003\u0011\u0003\u0011\u0007\u0011",
+    "o\n\u0011\f\u0011\u000e\u0011r\u000b\u0011\u0003\u0012\u0006\u0012u",
+    "\n\u0012\r\u0012\u000e\u0012v\u0003\u0013\u0006\u0013z\n\u0013\r\u0013",
+    "\u000e\u0013{\u0003\u0013\u0003\u0013\u0002\u0002\u0014\u0003\u0003",
+    "\u0005\u0004\u0007\u0005\t\u0006\u000b\u0007\r\b\u000f\t\u0011\n\u0013",
+    "\u000b\u0015\f\u0017\r\u0019\u000e\u001b\u000f\u001d\u0010\u001f\u0011",
+    "!\u0012#\u0013%\u0014\u0003\u0002\u0006\u0004\u0002C\\c|\u0006\u0002",
+    "2;C\\aac|\u0003\u00022;\u0005\u0002\u000b\f\u000f\u000f\"\"\u0002\u0081",
+    "\u0002\u0003\u0003\u0002\u0002\u0002\u0002\u0005\u0003\u0002\u0002\u0002",
+    "\u0002\u0007\u0003\u0002\u0002\u0002\u0002\t\u0003\u0002\u0002\u0002",
+    "\u0002\u000b\u0003\u0002\u0002\u0002\u0002\r\u0003\u0002\u0002\u0002",
+    "\u0002\u000f\u0003\u0002\u0002\u0002\u0002\u0011\u0003\u0002\u0002\u0002",
+    "\u0002\u0013\u0003\u0002\u0002\u0002\u0002\u0015\u0003\u0002\u0002\u0002",
+    "\u0002\u0017\u0003\u0002\u0002\u0002\u0002\u0019\u0003\u0002\u0002\u0002",
+    "\u0002\u001b\u0003\u0002\u0002\u0002\u0002\u001d\u0003\u0002\u0002\u0002",
+    "\u0002\u001f\u0003\u0002\u0002\u0002\u0002!\u0003\u0002\u0002\u0002",
+    "\u0002#\u0003\u0002\u0002\u0002\u0002%\u0003\u0002\u0002\u0002\u0003",
+    "\'\u0003\u0002\u0002\u0002\u0005.\u0003\u0002\u0002\u0002\u00074\u0003",
+    "\u0002\u0002\u0002\t:\u0003\u0002\u0002\u0002\u000b>\u0003\u0002\u0002",
+    "\u0002\rC\u0003\u0002\u0002\u0002\u000fI\u0003\u0002\u0002\u0002\u0011",
+    "T\u0003\u0002\u0002\u0002\u0013V\u0003\u0002\u0002\u0002\u0015X\u0003",
+    "\u0002\u0002\u0002\u0017Z\u0003\u0002\u0002\u0002\u0019\\\u0003\u0002",
+    "\u0002\u0002\u001b^\u0003\u0002\u0002\u0002\u001d`\u0003\u0002\u0002",
+    "\u0002\u001fi\u0003\u0002\u0002\u0002!l\u0003\u0002\u0002\u0002#t\u0003",
+    "\u0002\u0002\u0002%y\u0003\u0002\u0002\u0002\'(\u0007x\u0002\u0002(",
+    ")\u0007c\u0002\u0002)*\u0007t\u0002\u0002*+\u0007k\u0002\u0002+,\u0007",
+    "c\u0002\u0002,-\u0007t\u0002\u0002-\u0004\u0003\u0002\u0002\u0002./",
+    "\u0007f\u0002\u0002/0\u0007g\u0002\u000201\u0007u\u0002\u000212\u0007",
+    "f\u0002\u000223\u0007g\u0002\u00023\u0006\u0003\u0002\u0002\u000245",
+    "\u0007j\u0002\u000256\u0007c\u0002\u000267\u0007u\u0002\u000278\u0007",
+    "v\u0002\u000289\u0007c\u0002\u00029\b\u0003\u0002\u0002\u0002:;\u0007",
+    "e\u0002\u0002;<\u0007q\u0002\u0002<=\u0007p\u0002\u0002=\n\u0003\u0002",
+    "\u0002\u0002>?\u0007r\u0002\u0002?@\u0007c\u0002\u0002@A\u0007u\u0002",
+    "\u0002AB\u0007q\u0002\u0002B\f\u0003\u0002\u0002\u0002CD\u0007j\u0002",
+    "\u0002DE\u0007c\u0002\u0002EF\u0007e\u0002\u0002FG\u0007g\u0002\u0002",
+    "GH\u0007t\u0002\u0002H\u000e\u0003\u0002\u0002\u0002IJ\u0007h\u0002",
+    "\u0002JK\u0007k\u0002\u0002KL\u0007p\u0002\u0002LM\u0007a\u0002\u0002",
+    "MN\u0007x\u0002\u0002NO\u0007c\u0002\u0002OP\u0007t\u0002\u0002PQ\u0007",
+    "k\u0002\u0002QR\u0007c\u0002\u0002RS\u0007t\u0002\u0002S\u0010\u0003",
+    "\u0002\u0002\u0002TU\u0007-\u0002\u0002U\u0012\u0003\u0002\u0002\u0002",
+    "VW\u0007/\u0002\u0002W\u0014\u0003\u0002\u0002\u0002XY\u0007,\u0002",
+    "\u0002Y\u0016\u0003\u0002\u0002\u0002Z[\u00071\u0002\u0002[\u0018\u0003",
+    "\u0002\u0002\u0002\\]\u0007*\u0002\u0002]\u001a\u0003\u0002\u0002\u0002",
+    "^_\u0007+\u0002\u0002_\u001c\u0003\u0002\u0002\u0002`a\u0007g\u0002",
+    "\u0002ab\u0007u\u0002\u0002bc\u0007e\u0002\u0002cd\u0007t\u0002\u0002",
+    "de\u0007k\u0002\u0002ef\u0007d\u0002\u0002fg\u0007k\u0002\u0002gh\u0007",
+    "t\u0002\u0002h\u001e\u0003\u0002\u0002\u0002ij\u0007>\u0002\u0002jk",
+    "\u0007/\u0002\u0002k \u0003\u0002\u0002\u0002lp\t\u0002\u0002\u0002",
+    "mo\t\u0003\u0002\u0002nm\u0003\u0002\u0002\u0002or\u0003\u0002\u0002",
+    "\u0002pn\u0003\u0002\u0002\u0002pq\u0003\u0002\u0002\u0002q\"\u0003",
+    "\u0002\u0002\u0002rp\u0003\u0002\u0002\u0002su\t\u0004\u0002\u0002t",
+    "s\u0003\u0002\u0002\u0002uv\u0003\u0002\u0002\u0002vt\u0003\u0002\u0002",
+    "\u0002vw\u0003\u0002\u0002\u0002w$\u0003\u0002\u0002\u0002xz\t\u0005",
+    "\u0002\u0002yx\u0003\u0002\u0002\u0002z{\u0003\u0002\u0002\u0002{y\u0003",
+    "\u0002\u0002\u0002{|\u0003\u0002\u0002\u0002|}\u0003\u0002\u0002\u0002",
+    "}~\b\u0013\u0002\u0002~&\u0003\u0002\u0002\u0002\u0006\u0002pv{\u0003",
+    "\b\u0002\u0002"].join("");
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -31,31 +88,46 @@ export default class CalculatorLexer extends antlr4.Lexer {
     static grammarFileName = "Calculator.g4";
     static channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
 	static modeNames = [ "DEFAULT_MODE" ];
-	static literalNames = [ null, "'*'", "'/'", "'+'", "'-'", "'='", null, 
-                         null, "'('", "')'" ];
-	static symbolicNames = [ null, "MUL", "DIV", "ADD", "SUB", "EQ", "ID", 
-                          "INT", "LPAREN", "RPAREN", "NEWLINE", "WS" ];
-	static ruleNames = [ "MUL", "DIV", "ADD", "SUB", "EQ", "ID", "INT", "LPAREN", 
-                      "RPAREN", "NEWLINE", "WS" ];
+	static literalNames = [ null, "'variar'", "'desde'", "'hasta'", "'con'", 
+                         "'paso'", "'hacer'", "'fin_variar'", "'+'", "'-'", 
+                         "'*'", "'/'", "'('", "')'", "'escribir'", "'<-'" ];
+	static symbolicNames = [ null, null, null, null, null, null, null, null, 
+                          null, null, null, null, null, null, null, "ASIGNAR", 
+                          "ID", "INT", "WS" ];
+	static ruleNames = [ "T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", 
+                      "T__7", "T__8", "T__9", "T__10", "T__11", "T__12", 
+                      "T__13", "ASIGNAR", "ID", "INT", "WS" ];
 
     constructor(input) {
-        super(input)
-        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new antlr4.atn.PredictionContextCache());
+        super(input);
+this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, new PredictionContextCache());
+        this._interp = new antlr4.atn.LexerATNSimulator(this, atn, decisionsToDFA, );
+    }
+
+    get atn() {
+        return atn;
     }
 }
 
 CalculatorLexer.EOF = antlr4.Token.EOF;
-CalculatorLexer.MUL = 1;
-CalculatorLexer.DIV = 2;
-CalculatorLexer.ADD = 3;
-CalculatorLexer.SUB = 4;
-CalculatorLexer.EQ = 5;
-CalculatorLexer.ID = 6;
-CalculatorLexer.INT = 7;
-CalculatorLexer.LPAREN = 8;
-CalculatorLexer.RPAREN = 9;
-CalculatorLexer.NEWLINE = 10;
-CalculatorLexer.WS = 11;
+CalculatorLexer.T__0 = 1;
+CalculatorLexer.T__1 = 2;
+CalculatorLexer.T__2 = 3;
+CalculatorLexer.T__3 = 4;
+CalculatorLexer.T__4 = 5;
+CalculatorLexer.T__5 = 6;
+CalculatorLexer.T__6 = 7;
+CalculatorLexer.T__7 = 8;
+CalculatorLexer.T__8 = 9;
+CalculatorLexer.T__9 = 10;
+CalculatorLexer.T__10 = 11;
+CalculatorLexer.T__11 = 12;
+CalculatorLexer.T__12 = 13;
+CalculatorLexer.T__13 = 14;
+CalculatorLexer.ASIGNAR = 15;
+CalculatorLexer.ID = 16;
+CalculatorLexer.INT = 17;
+CalculatorLexer.WS = 18;
 
 
 

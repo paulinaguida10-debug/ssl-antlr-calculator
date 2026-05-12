@@ -23,7 +23,7 @@ async function main() {
     let lexer = new CalculatorLexer(inputStream);
     let tokenStream = new CommonTokenStream(lexer);
     let parser = new CalculatorParser(tokenStream);
-    let tree = parser.prog();
+    let tree = parser.programa();
     
     // Verifico si se produjeron errores
     if (parser.syntaxErrorsCount > 0) {
