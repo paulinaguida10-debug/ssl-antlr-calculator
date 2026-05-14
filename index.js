@@ -25,6 +25,17 @@ input = fs.readFileSync(fileName, 'utf8');
     let tokenStream = new CommonTokenStream(lexer);
     tokenStream.fill();
     let parser = new CalculatorParser(tokenStream);
+    // Tabla de lexemas-tokens
+console.log("\nTabla de lexemas-tokens:");
+console.log("Lexema\t\t\tToken");
+console.log("─".repeat(40));
+const allTokens = tokenStream.tokens;
+for (const token of allTokens) {
+    if (token.type !== -1) {
+        const tokenName = parser.symbolicNames[token.type] || token.type;
+        console.log(`${token.text}\t\t\t${tokenName}`);
+    }
+}
     let tree = parser.programa();
     
     // Verifico si se produjeron errores
