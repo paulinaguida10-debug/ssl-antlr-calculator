@@ -32,7 +32,7 @@ console.log("─".repeat(40));
 const allTokens = tokenStream.tokens;
 for (const token of allTokens) {
     if (token.type !== -1) {
-        const tokenName = parser.symbolicNames[token.type] || token.type;
+        const tokenName = parser.symbolicNames[token.type] || parser.literalNames[token.type] || token.type;
         console.log(`${token.text}\t\t\t${tokenName}`);
     }
 }
