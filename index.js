@@ -23,6 +23,7 @@ input = fs.readFileSync(fileName, 'utf8');
     let inputStream = CharStreams.fromString(input);
     let lexer = new CalculatorLexer(inputStream);
     let tokenStream = new CommonTokenStream(lexer);
+    tokenStream.fill();
     let parser = new CalculatorParser(tokenStream);
     let tree = parser.programa();
     
